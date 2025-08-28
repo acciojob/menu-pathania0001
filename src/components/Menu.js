@@ -7,6 +7,7 @@ const items = [
     price: 15.99,
     img: 'https://www.swiggy.com/city/delhi/cecilias-pizzeria-kailash-colony-greater-kailash-2-rest1082809',
     desc: `I'm baby woke mlkshk wolf bitters live-edge blue bottle, hammock freegan copper mug whatever cold-pressed `,
+    
   },
   {
     id: 2,
@@ -78,7 +79,9 @@ const Menu = ({filter})=>{
   console.log("my filter:",filter)
   return(<div className="grid grid-2 grid-gap p-10">
      { items.filter((item)=>( filter === "all" || filter === item.category))
-      .map((item)=>(<div>
+      .map((item)=>(<div 
+          key={item.id}
+          data-test-id={`menu-item-${item.category}`}>
             <img src={item.img}/>
             <div>
                 <div className="border-b flex justify-between">
