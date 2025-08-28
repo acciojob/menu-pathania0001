@@ -1,30 +1,29 @@
-import React from 'react'
+import React from 'react';
 
-const Menu = ({ filterItems }) => {
+const Menu = ({ items }) => {
   return (
-    <div className="grid grid-2 gap-1 p-10">
-      {filterItems
-        .map((item) => (
-          <div 
-  key={item.id}
-  data-test-id={
-    item.category === "breakfast" ? "menu-item-breakfast" :
-    item.category === "lunch" ? "menu-item-lunch" :
-    item.category === "shakes" ? "menu-item-shakes" : ""
-  }
-  className="p-4 border rounded shadow"
->
-            <img src={item.img} alt={item.title} className="w-full h-40 object-cover mb-3"/>
-            <div>
-              <div className="border-b flex justify-between mb-2">
-                <h1 className="text-xl font-bold">{item.title}</h1>
-                <span className="text-lg">${item.price}</span>
-              </div>
-              <p>{item.desc}</p>
+    <div className="section-center">
+      {items.map((menuItem) => {
+        const { id, title, img, desc, price, category } = menuItem;
+        return (
+          <article
+            key={id}
+            className="menu-item"
+            data-test-id={`menu-item-${category.toLowerCase()}`} 
+          >
+            <img src={img} alt={title} className="photo" />
+            <div className="item-info">
+              <header>
+                <h4>{title}</h4>
+                <h4 className="price">{price}</h4>
+              </header>
+              <p className="item-text">{desc}</p>
             </div>
-          </div>
-        ))}
+          </article>
+        );
+      })}
     </div>
   );
 };
+
 export default Menu;
