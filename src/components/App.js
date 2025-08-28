@@ -4,7 +4,6 @@ import Menu from './Menu'
 const App = () => {
   const [filter,setFilter] = useState("all");
 
-
   return (
     <div id="main">
       <h1 className="text-3xl font-bold text-center mb-6">Our Menu</h1>

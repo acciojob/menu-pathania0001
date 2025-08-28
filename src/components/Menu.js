@@ -74,25 +74,28 @@ const items = [
     desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
   },
 ]
-
-const Menu = ({filter})=>{
-  console.log("my filter:",filter)
-  return(<div className="grid grid-2 grid-gap p-10">
-     { items.filter((item)=>( filter === "all" || filter === item.category))
-      .map((item)=>(<div 
-          key={item.id}
-          data-test-id={`menu-item-${item.category}`}>
-            <img src={item.img}/>
+const Menu = ({ filter }) => {
+  return (
+    <div className="grid grid-cols-2 gap-4 p-10">
+      {items
+        .filter((item) => filter === "all" || filter === item.category.toLowerCase())
+        .map((item) => (
+          <div 
+            key={item.id}
+            data-test-id={`menu-item-${item.category.toLowerCase()}`}
+            className="p-4 border rounded shadow"
+          >
+            <img src={item.img} alt={item.title} className="w-full h-40 object-cover mb-3"/>
             <div>
-                <div className="border-b flex justify-between">
-                    <h1 className="text-xl text-black">{item.title}</h1>
-                    <span className="color-filter text-lg">${item.price}</span>
-                </div>
-                <p>{item.desc}</p>
+              <div className="border-b flex justify-between mb-2">
+                <h1 className="text-xl font-bold">{item.title}</h1>
+                <span className="text-lg">${item.price}</span>
+              </div>
+              <p>{item.desc}</p>
             </div>
-        </div>
-      ))}
-  </div>);
-}
-
+          </div>
+        ))}
+    </div>
+  );
+};
 export default Menu;
