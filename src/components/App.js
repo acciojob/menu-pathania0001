@@ -6,8 +6,9 @@ import Menu from './Menu';
 const App = () => {
   const [menuItems, setMenuItems] = useState(menu);
   const allCategories = ['All', ...new Set(menu.map(item => item.category))];
+  console.log(menu);
 
-  const filterItems = (category) => {
+    const filterItems = (category) => {
     if (category === 'All') {
       setMenuItems(menu);
     } else {
@@ -16,20 +17,19 @@ const App = () => {
     }
   };
 
-  return (
+return (
     <main id="main">
       <section className="menu section">
         <div className="title">
           <h2>Our Menu</h2>
           <div className="underline"></div>
         </div>
-
         <div className="btn-container">
           {allCategories.map((category, index) => (
             <button
               type="button"
               className="filter-btn"
-              id={`filter-btn-${index}`} 
+              id={`filter-btn-${index}`}
               key={index}
               onClick={() => filterItems(category)}
             >
@@ -37,12 +37,10 @@ const App = () => {
             </button>
           ))}
         </div>
-
-        {/* ✅ match prop name with Menu.js */}
-        <Menu filterItems={menuItems} />
+        <Menu items={menuItems} />
       </section>
     </main>
   );
-};
+}
 
-export default App;
+export default App
