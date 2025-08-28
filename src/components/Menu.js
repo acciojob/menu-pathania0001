@@ -8,9 +8,9 @@ const Menu = ({ filterItems }) => {
           <div 
   key={item.id}
   data-test-id={
-    item.category === "Breakfast" ? "menu-item-breakfast" :
-    item.category === "Lunch" ? "menu-item-lunch" :
-    item.category === "Shakes" ? "menu-item-shakes" : ""
+    item.category === "breakfast" ? "menu-item-breakfast" :
+    item.category === "lunch" ? "menu-item-lunch" :
+    item.category === "shakes" ? "menu-item-shakes" : ""
   }
   className="p-4 border rounded shadow"
 >
