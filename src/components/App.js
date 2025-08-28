@@ -4,9 +4,6 @@ import Menu from './Menu'
 const App = () => {
   const [filter,setFilter] = useState("all");
 
-  const handleOnClick = (item)=>{
-    setFilter(item);
-  }
 
   return (
     <div id="main">
@@ -16,7 +13,7 @@ const App = () => {
   <button 
     key={index}
     id={`filter-btn-${index+1}`} 
-    onClick={() => setFilter(item)}
+    onClick={() => setFilter(item.toLowerCase())}
     className="px-3 py-1 border rounded hover:bg-gray-200"
   >
     {item}
